@@ -5,9 +5,7 @@ import Link from "next/link";
 async function getData(){
     const query = "*[_type == 'heroImage'][0]";
 
-    const data = await client.fetch(query, {
-        cache: "no-store",
-    });
+    const data = await client.fetch(query);
 
     return data;
 }
