@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { client, urlFor } from "../lib/sanity";
 import Link from "next/link";
+import { revalidatePath } from "next/cache";
 
 async function getData(){
     const query = "*[_type == 'heroImage'][0]";
@@ -11,6 +12,7 @@ async function getData(){
 }
 
 export const dynamic = "force-dynamic";
+revalidatePath('/')
 
 export default async function Hero(){
     const data = await getData();
