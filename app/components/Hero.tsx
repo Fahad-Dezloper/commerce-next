@@ -1,24 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
-import { sanityFetch, urlFor } from "../lib/sanity"; // Import the helper
+import { client, sanityFetch, urlFor } from "../lib/sanity"; // Import the helper
 
-// Define the query for the hero image (this can vary depending on your Sanity schema)
-const heroImageQuery = "*[_type == 'heroImage'][0]";
 
-async function getData() {
-  // Use sanityFetch to get the data with cache control
-  const data = await sanityFetch({
-    query: heroImageQuery,
-    tags: ["heroImage"], // Add relevant tags for caching
-  });
-
+interface HeroData {
+  image1: {
+    asset: {
+      _ref: string;
+    };
+  };
+  image2: {
+    asset: {
+      _ref: string;
+    };
+  };
+}
+async function getData(): Promise<HeroData> {
+  const query = "*[_type == 'heroImage'][0]";
+  const data = await client.fetch(query);
   return data;
 }
 
 export const dynamic = "force-dynamic"; // Use force-dynamic for non-cached builds
 
 export default async function Hero() {
-  const data = await getData();
+  const data: HeroData = await getData();
 
   return (
     <section className="mx-auto max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8">
