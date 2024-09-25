@@ -5,7 +5,9 @@ import Link from "next/link";
 async function getData(){
     const query = "*[_type == 'heroImage'][0]";
 
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, {
+        cache: "no-store",
+    });
 
     return data;
 }
@@ -13,7 +15,7 @@ async function getData(){
 export const dynamic = "force-dynamic";
 
 export default async function Hero(){
-    const data = await getData()
+    const data = await getData();
     return (
         <section className="mx-auto max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8">
             <div className="mb-8 flex flex-wrap items-center justify-between md:mb-16">
