@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Hero from "./components/Hero";
 import Newest from "./components/Newest";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 // revalidatePath('/')
 
 export default function Home() {
