@@ -1,4 +1,4 @@
-import "server-only";
+// import "server-only";
 import { createClient, type ClientConfig, type QueryParams } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
