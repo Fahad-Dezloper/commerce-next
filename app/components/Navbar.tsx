@@ -24,7 +24,7 @@ export default function Navbar(){
                 </Link>
 
                 <nav className="hidden gap-12 lg:flex 2xl:ml-16">
-                    {links.map((link, idx ) => (
+                {links.map((link, idx ) => (
                         <div key={idx}>
                             {pathname === link.href ? (
                                 <Link className="text-lg font-semibold text-primary" href={link.href}>
