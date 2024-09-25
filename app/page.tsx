@@ -4,7 +4,7 @@ import Newest from "./components/Newest";
 import { revalidatePath } from "next/cache";
 
 export const dynamic = "force-dynamic";
-revalidatePath('/')
+// revalidatePath('/')
 
 export default function Home() {
   return (
