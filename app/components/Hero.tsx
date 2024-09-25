@@ -12,7 +12,7 @@ async function getData(){
 }
 
 export const dynamic = "force-dynamic";
-revalidatePath('/')
+// revalidatePath('/')
 
 export default async function Hero(){
     const data = await getData();
