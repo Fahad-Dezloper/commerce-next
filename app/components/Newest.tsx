@@ -5,13 +5,14 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 async function getData(){
-    const query = `*[_type == 'product'][0...4]{
-  _id,
-    price,
-  name,
-    "slug": slug.current,
-    "categoryName": category->name,
-    "imageUrl": images[0].asset->url
+    const query = `
+    *[_type == 'product'][0...4]{
+            _id,
+                price,
+            name,
+                "slug": slug.current,
+                "categoryName": category->name,
+                "imageUrl": images[0].asset->url
 }`;
 
     const data = await client.fetch(query)
@@ -19,7 +20,6 @@ async function getData(){
     return data;
 }
 
-export const dynamic = "force-dynamic";
 
 export default async function Newest(){
     const data: simplifiedProduct[] = await getData();
